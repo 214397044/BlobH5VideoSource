@@ -1,6 +1,6 @@
 var http = require('http');
 var querystring = require('querystring');
-var trustedDomains = 'http://localhost';
+var trustedDomains = 'http://localhost'; //跨域设置
 
 http.createServer(function (req,res){
 	if(req.method == "POST"){
@@ -8,7 +8,7 @@ http.createServer(function (req,res){
 		var requrl = req.url.toString();
 		requrl = requrl.split("/");
 		vidno = requrl[1];
-		var path = 'data\\' + vidno + '\\player.mp4';
+		var path = 'demo.mp4';
 		var fs = require('fs');
 		var rs = fs.createReadStream(path);
 		var buf1;
@@ -33,6 +33,6 @@ http.createServer(function (req,res){
 	else
 	{
 		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.end('Unsupported accessing.');
+		res.end('Unsupported accessing.'); //阻止用GET方式访问
 	}
 }).listen(8080);
