@@ -1,13 +1,9 @@
 var http = require('http');
-var querystring = require('querystring');
 var trustedDomains = 'http://localhost'; //跨域设置
 
 http.createServer(function (req,res){
 	if(req.method == "POST"){
 		console.log('接受请求视频流输出.');
-		var requrl = req.url.toString();
-		requrl = requrl.split("/");
-		vidno = requrl[1];
 		var path = 'demo.mp4';
 		var fs = require('fs');
 		var rs = fs.createReadStream(path);
